@@ -19,6 +19,13 @@ jobs:
           flutter-version: '3.22.0'
           channel: 'stable'
 
+      - name: Download Gradle Wrapper JAR
+        run: |
+          mkdir -p android/gradle/wrapper
+          curl -L https://services.gradle.org/distributions/gradle-7.5-all.zip -o /tmp/gradle-7.5.zip
+          unzip -q /tmp/gradle-7.5.zip -d /tmp/
+          cp /tmp/gradle-7.5/lib/gradle-wrapper.jar android/gradle/wrapper/
+
       - name: Get dependencies
         run: flutter pub get
 
