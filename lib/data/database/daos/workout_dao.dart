@@ -4,7 +4,7 @@ import 'package:progress_tracker/data/database/tables/workout_table.dart';
 
 part 'workout_dao.g.dart';
 
-@DriftAccessor(include: {'workout_entries'})
+@DriftAccessor(tables: [WorkoutEntries])
 class WorkoutDao extends DatabaseAccessor<AppDatabase> with _$WorkoutDaoMixin {
   WorkoutDao(AppDatabase db) : super(db);
 
@@ -65,7 +65,7 @@ class WorkoutDao extends DatabaseAccessor<AppDatabase> with _$WorkoutDaoMixin {
     return stats;
   }
 
-  Future<bool> deleteWorkout(int id) {
+  Future<int> deleteWorkout(int id) {
     return (delete(workoutEntries)..where((tbl) => tbl.id.equals(id))).go();
   }
 }
