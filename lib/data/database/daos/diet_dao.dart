@@ -4,7 +4,7 @@ import 'package:progress_tracker/data/database/tables/diet_table.dart';
 
 part 'diet_dao.g.dart';
 
-@DriftAccessor(include: {'diet_entries'})
+@DriftAccessor(tables: [DietEntries])
 class DietDao extends DatabaseAccessor<AppDatabase> with _$DietDaoMixin {
   DietDao(AppDatabase db) : super(db);
 
@@ -24,7 +24,7 @@ class DietDao extends DatabaseAccessor<AppDatabase> with _$DietDaoMixin {
         .get();
   }
 
-  Future<bool> deleteFood(int id) {
+  Future<int> deleteFood(int id) {
     return (delete(dietEntries)..where((tbl) => tbl.id.equals(id))).go();
   }
 
