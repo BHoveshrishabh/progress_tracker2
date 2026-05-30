@@ -4,7 +4,7 @@ import 'package:progress_tracker/data/database/tables/task_table.dart';
 
 part 'task_dao.g.dart';
 
-@DriftAccessor(include: {'task_entries'})
+@DriftAccessor(tables: [TaskEntries])
 class TaskDao extends DatabaseAccessor<AppDatabase> with _$TaskDaoMixin {
   TaskDao(AppDatabase db) : super(db);
 
@@ -34,7 +34,7 @@ class TaskDao extends DatabaseAccessor<AppDatabase> with _$TaskDaoMixin {
 
   Future<int> getTotalHours(DateTime startDate, DateTime endDate) async {
     final entries = await getWeekTasks(startDate, endDate);
-    int totalMinutes = entries.fold(0, (sum, entry) => sum + entry.durationMinutes);
+    int totalMinutes = entries.fold(0, (sum, entry) => sum + (entry.durationMinutes as int));
     return totalMinutes ~/ 60;
   }
 
@@ -49,7 +49,7 @@ class TaskDao extends DatabaseAccessor<AppDatabase> with _$TaskDaoMixin {
     };
 
     for (var entry in entries) {
-      stats[entry.category] = (stats[entry.category] ?? 0) + entry.durationMinutes;
+      stats[entry.category] = (stats[entry.category] ?? 0) + (entry.durationMinutes as int);
     }
 
     return stats;
@@ -59,11 +59,11 @@ class TaskDao extends DatabaseAccessor<AppDatabase> with _$TaskDaoMixin {
     final entries = await getWeekTasks(startDate, endDate);
     if (entries.isEmpty) return 0;
     
-    int totalScore = entries.fold(0, (sum, entry) => sum + entry.focusScore);
+    int totalScore = entries.fold(0, (sum, entry) => sum + (entry.focusScore as int));
     return totalScore / entries.length;
   }
 
-  Future<bool> deleteTask(int id) {
+  Future<int> deleteTask(int id) {
     return (delete(taskEntries)..where((tbl) => tbl.id.equals(id))).go();
   }
 }
