@@ -25,19 +25,10 @@ jobs:
           flutter-version: '3.22.0'
           channel: 'stable'
 
-      - name: Fix Gradle wrapper
+      - name: Download gradle-wrapper.jar
         run: |
           mkdir -p android/gradle/wrapper
-          cat > android/gradle/wrapper/gradle-wrapper.properties << 'EOF'
-          distributionUrl=https\://services.gradle.org/distributions/gradle-7.5-all.zip
-          distributionBase=GRADLE_USER_HOME
-          distributionPath=wrapper/dists
-          zipStorePath=wrapper/dists
-          zipStoreBase=GRADLE_USER_HOME
-          EOF
-          # Download the actual gradle-wrapper.jar
-          cd android/gradle/wrapper
-          wget https://raw.githubusercontent.com/gradle/gradle/v7.5.0/gradle/wrapper/gradle-wrapper.jar
+          wget -O android/gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v7.5.0/gradle/wrapper/gradle-wrapper.jar
 
       - name: Get dependencies
         run: flutter pub get
