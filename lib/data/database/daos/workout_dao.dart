@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart';
 import 'package:progress_tracker/data/database/app_database.dart';
-import 'package:progress_tracker/data/database/tables/workout_table.dart';
+import 'package:progress_tracker/data/tables/workout_table.dart';
 
 part 'workout_dao.g.dart';
 
