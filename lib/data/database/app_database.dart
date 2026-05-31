@@ -3,10 +3,10 @@ import 'package:drift_flutter/drift_flutter.dart';
 import 'package:progress_tracker/data/database/daos/diet_dao.dart';
 import 'package:progress_tracker/data/database/daos/workout_dao.dart';
 import 'package:progress_tracker/data/database/daos/task_dao.dart';
-import 'package:progress_tracker/data/database/tables/diet_table.dart';
-import 'package:progress_tracker/data/database/tables/workout_table.dart';
-import 'package:progress_tracker/data/database/tables/task_table.dart';
-import 'package:progress_tracker/data/database/tables/goals_table.dart';
+import 'package:progress_tracker/data/tables/diet_table.dart';
+import 'package:progress_tracker/data/tables/workout_table.dart';
+import 'package:progress_tracker/data/tables/task_table.dart';
+import 'package:progress_tracker/data/tables/goals_table.dart';
 
 part 'app_database.g.dart';
 
