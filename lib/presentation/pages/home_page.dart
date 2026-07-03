@@ -37,59 +37,62 @@ class _HomePageState extends State<HomePage> {
         return SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            spacing: 16,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'Today\'s Overview',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
+              const SizedBox(height: 12),
               Row(
-                spacing: 12,
                 children: [
                   Expanded(
                     child: _StatCard(
                       title: 'Calories',
-                      value: '${controller.todayDietStats.value?.totalCalories ?? 0}',
+                      value: '${controller.todayDietStats.value?.totalCalories ?? 0}',
                       unit: 'kcal',
                       target: '2500',
                     ),
                   ),
+                  const SizedBox(width: 12),
                   Expanded(
                     child: _StatCard(
                       title: 'Protein',
-                      value: '${(controller.todayDietStats.value?.totalProtein ?? 0).toStringAsFixed(0)}',
+                      value: '${(controller.todayDietStats.value?.totalProtein ?? 0).toStringAsFixed(0)}',
                       unit: 'g',
                       target: '150g',
                     ),
                   ),
                 ],
               ),
+              const SizedBox(height: 12),
               Row(
-                spacing: 12,
                 children: [
                   Expanded(
                     child: _StatCard(
                       title: 'Workouts',
-                      value: '${controller.todayWorkoutStats.value?.workoutsLogged ?? 0}',
+                      value: '${controller.todayWorkoutStats.value?.workoutsLogged ?? 0}',
                       unit: 'done',
                       target: '5/week',
                     ),
                   ),
+                  const SizedBox(width: 12),
                   Expanded(
                     child: _StatCard(
                       title: 'Productive',
-                      value: '${controller.todayTaskStats.value?.totalHours ?? 0}',
+                      value: '${controller.todayTaskStats.value?.totalHours ?? 0}',
                       unit: 'hours',
                       target: '40/week',
                     ),
                   ),
                 ],
               ),
+              const SizedBox(height: 16),
               Text(
                 'Weekly Summary',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
+              const SizedBox(height: 8),
               Card(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -152,15 +155,16 @@ class _StatCard extends StatelessWidget {
         padding: const EdgeInsets.all(12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 8,
           children: [
             Text(title, style: Theme.of(context).textTheme.labelSmall),
+            const SizedBox(height: 8),
             Text(
               '$value $unit',
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 color: AppTheme.secondary,
               ),
             ),
+            const SizedBox(height: 8),
             Text(
               'Target: $target',
               style: Theme.of(context).textTheme.labelSmall,
