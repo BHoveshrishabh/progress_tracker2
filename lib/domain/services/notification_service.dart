@@ -67,7 +67,7 @@ class NotificationService {
           presentSound: true,
         ),
       ),
-      androidScheduleMode: AndroidScheduleMode.exactAndAllowWhileIdle,
+      androidScheduleMode: AndroidScheduleMode.exact,
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
     );
