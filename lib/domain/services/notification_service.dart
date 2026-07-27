@@ -35,10 +35,11 @@ class NotificationService {
 
     await _notificationsPlugin.initialize(settings);
 
+    // Request notification permission for Android 13+
     await _notificationsPlugin
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()
-        ?.requestNotificationPermission();
+        ?.requestNotificationsPermission();
   }
 
   Future<void> scheduleReminder({
