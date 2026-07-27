@@ -13,14 +13,16 @@ class DietDao extends DatabaseAccessor<AppDatabase> with _$DietDaoMixin {
   }
 
   Future<List<DietEntry>> getTodayDiet(DateTime today) {
+    final todayStart = DateTime(today.year, today.month, today.day);
+    final todayEnd = todayStart.add(const Duration(days: 1));
     return (select(dietEntries)
-          ..where((tbl) => tbl.date.equals(today)))
+          ..where((tbl) => tbl.date.isBetween(Variable<DateTime>(todayStart), Variable<DateTime>(todayEnd))))
         .get();
   }
 
   Future<List<DietEntry>> getWeekDiet(DateTime startDate, DateTime endDate) {
     return (select(dietEntries)
-          ..where((tbl) => tbl.date.isBetween(startDate, endDate)))
+          ..where((tbl) => tbl.date.isBetween(Variable<DateTime>(startDate), Variable<DateTime>(endDate))))
         .get();
   }
 
