@@ -39,34 +39,39 @@ class _DietPageState extends State<DietPage> {
         return SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            spacing: 16,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('Log Food', style: Theme.of(context).textTheme.titleLarge),
+              const SizedBox(height: 16),
               TextField(
                 controller: _nameController,
                 decoration: const InputDecoration(hintText: 'Food name'),
               ),
+              const SizedBox(height: 16),
               TextField(
                 controller: _caloriesController,
                 decoration: const InputDecoration(hintText: 'Calories'),
                 keyboardType: TextInputType.number,
               ),
+              const SizedBox(height: 16),
               TextField(
                 controller: _proteinController,
                 decoration: const InputDecoration(hintText: 'Protein (g)'),
                 keyboardType: TextInputType.number,
               ),
+              const SizedBox(height: 16),
               TextField(
                 controller: _carbsController,
                 decoration: const InputDecoration(hintText: 'Carbs (g)'),
                 keyboardType: TextInputType.number,
               ),
+              const SizedBox(height: 16),
               TextField(
                 controller: _fatController,
                 decoration: const InputDecoration(hintText: 'Fat (g)'),
                 keyboardType: TextInputType.number,
               ),
+              const SizedBox(height: 16),
               DropdownButton<String>(
                 value: _selectedMealType,
                 items: ['breakfast', 'lunch', 'dinner', 'snacks']
@@ -74,12 +79,16 @@ class _DietPageState extends State<DietPage> {
                     .toList(),
                 onChanged: (v) => setState(() => _selectedMealType = v!),
               ),
+              const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: _logFood,
                 child: const Text('Log Food'),
               ),
+              const SizedBox(height: 16),
               const Divider(),
+              const SizedBox(height: 16),
               Text('Today\'s Meals', style: Theme.of(context).textTheme.titleLarge),
+              const SizedBox(height: 16),
               if (controller.todayDiet.isEmpty)
                 Text('No meals logged', style: Theme.of(context).textTheme.bodyMedium)
               else
