@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:drift/drift.dart' as drift;
 import 'package:progress_tracker/data/database/app_database.dart';
 import 'package:progress_tracker/data/database/tables/task_table.dart';
 import 'package:progress_tracker/domain/entities/task_entry.dart';
@@ -36,11 +37,11 @@ class TaskController extends GetxController {
     try {
       await db.taskDao.insertTask(
         TaskEntriesCompanion(
-          date: Value(DateTime.now()),
-          taskName: Value(taskName),
-          durationMinutes: Value(durationMinutes),
-          category: Value(category),
-          focusScore: Value(focusScore),
+          date: drift.Value(DateTime.now()),
+          taskName: drift.Value(taskName),
+          durationMinutes: drift.Value(durationMinutes),
+          category: drift.Value(category),
+          focusScore: drift.Value(focusScore),
         ),
       );
       await loadTodayTasks();
